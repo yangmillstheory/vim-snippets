@@ -530,40 +530,6 @@ from ${1:module} import ${2:Stuff}
 endsnippet
 
 
-##############
-# PROPERTIES #
-##############
-snippet roprop "Read Only Property" b
-@property
-def ${1:name}(self):
-	${2:return self._$1}$0
-endsnippet
-
-snippet rwprop "Read write property" b
-def ${1:name}():
-	`!p snip.rv = triple_quotes(snip) if t[2] else ''
-`${2:TODO: Docstring for $1.}`!p
-if t[2]:
-	snip >> 1
-
-	style = get_style(snip)
-	snip.rv += '\n' + snip.mkline('', indent='')
-	snip += format_return(style)
-	snip.rv += '\n' + snip.mkline('', indent='')
-	snip += triple_quotes(snip)
-else:
-	snip.rv = ""`
-	def fget(self):
-		return self._$1$0
-
-	def fset(self, value):
-		self._$1 = value
-	return locals()
-
-$1 = property(**$1(), doc=$1.__doc__)
-endsnippet
-
-
 ####################
 # If / Else / Elif #
 ####################

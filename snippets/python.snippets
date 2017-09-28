@@ -79,6 +79,21 @@ snippet property
 			${0:del self._$1}
 		return locals()
 	$1 = property(**$1())
+
+snippet roprop "Read Only Property" b
+	@property
+	def ${1:name}(self):
+		${2:return self._$1}$0
+
+snippet rwprop "Read write property" b
+	@property
+	def ${1:name}(self):
+		${2:return self._$1}
+
+	@$1.setter
+	def $1(self, $1):
+		${3:self._$1 = $1}$0
+
 # Ifs
 snippet if
 	if ${1:condition}:
